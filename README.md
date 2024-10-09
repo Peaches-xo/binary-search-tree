@@ -10,4 +10,6 @@ The Odin Project // Binary Search Tree
 
     [x] Tip: If you would like to visualize your binary search tree, here is a prettyPrint() function that will console.log your tree in a structured format. This function will expect to receive the root of your tree as the value for the node parameter.
 
-4. - [ ] Write insert(value) and deleteItem(value) functions that insert/delete the given value. You’ll have to deal with several cases for delete, such as when a node has children or not.
+4. - [x] Write insert(value) and [ ] deleteItem(value) functions that insert/delete the given value. You’ll have to deal with several cases for delete, such as when a node has children or not.
+
+

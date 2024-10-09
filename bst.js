@@ -13,7 +13,7 @@ class Node {
 class Tree {
     constructor(array){
        //sort and remove duplicates
-       debugger;
+       //debugger;
         this.sortedArr = array.toSorted((a, b) => a - b)
                                .filter(function(value, index, array) {
                                         return array.indexOf(value) === index; });
@@ -54,29 +54,46 @@ class Tree {
         return node;
     }
 
-    // // * 4. Write insert(value) function 
-    insert(root, nodeToInsert) {
-      console.log(`root: ${JSON.stringify(root)}`);
-    
-
-      //Check for empty tree
-      if (root === null)
+    // * 4. Write insert(value) function 
+    insert(currentNode, nodeToInsert){
+      console.log(`currentNode: ${JSON.stringify(currentNode)}`);
+  
+      //check for empty tree. If tree is empty, create a new tree. 
+      if (currentNode === null){
           return new Node(nodeToInsert);
+      }
+  
+      //check for duplicates. We dont want to add duplicates
+      if (currentNode.data === nodeToInsert){
+          return currentNode;
+      }
+  
+      //run comparisons & recurse to nodes
+      if (nodeToInsert < currentNode.data){ //go left
           
-      //Check for duplicates 
-      if (root.data === nodeToInsert)
-          return root;
-          
-      //Run comparisons & recurse to nodes
-      if (nodeToInsert < root.data)
-          root.left = this.insert(root.left, nodeToInsert);
-      else if (nodeToInsert > root.data)
-          root.right = this.insert(root.right, nodeToInsert);
-     
-      //prettyPrint(root);
-      return root;
-    }
+          //check if currentNode is a leaf
+          if (currentNode.left === null){
+              currentNode.left = new Node(nodeToInsert);
+          } else {
+              this.insert(currentNode.left, nodeToInsert);
+          }
+      }
+  
+      if (nodeToInsert > currentNode.data){ //go right
+  
+           //check if currentNode is a leaf
+           if (currentNode.right === null){
+              currentNode.right = new Node(nodeToInsert);
+          } else {
+              this.insert(currentNode.right, nodeToInsert);
+          }
+      }
+  
+      return currentNode;
+  }
 
+
+  // * 4. Write delete value function
     delete(root,nodeToDelete){
    
 
@@ -129,10 +146,11 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   };
 
   //let myTree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-let myTree = new Tree([4, 6,9,1,2,4,7]);
-
-myTree.insert(myTree.root, 5);
+let myTree = new Tree([4,6,9,1,2,4,7]);
 prettyPrint(myTree.root);
-myTree.delete(myTree.root, 5);
+myTree.insert(myTree.root, 5);
+myTree.insert(myTree.root, 3);
+prettyPrint(myTree.root);
+//myTree.delete(myTree.root, 5);
 
 
