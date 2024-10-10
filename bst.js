@@ -94,28 +94,44 @@ class Tree {
 
 
   // * 4. Write delete value function
-    delete(root,nodeToDelete){
+    delete(currentNode,nodeToDelete){
    
+        //tree is empty
+        if (currentNode === null){
+            return currentNode;
+        }
 
-    //     if (root.data === nodeToDelete){
-    //       //find node to replace
-    //       //check if leaf
-    //       if (root.left == null && root.right == null){
-    //         console.log(`this node ${root.data} is a leaf!`);
-    //       }
-    //       return nodeToDelete;
-    //     }
 
-    //  if (nodeToDelete < root.data){
+        if (currentNode.data < nodeToDelete){
+
+        }
+
+
+         if (currentNode.data === nodeToDelete){
+           //find node to replace by checking for children
+
+            //if currentNode has 1 child
+
+            //if currentNode has 2 children
+                //call successor function
+
+            //if currentNode has 0 children (is leaf)
+            //       if (currentNode.left === null && currentNode.right === null){
+            //         console.log(`this node ${currentNode.data} is a leaf!`);
+            //       }
+    
+         }
+
+    //  if (nodeToDelete < currentNode.data){
     //   //go to left subtree
-    //   console.log(`nodeToDel is less than root.data`);
-    //   this.delete(root.left, nodeToDelete);
+    //   console.log(`nodeToDel is less than currentNode.data`);
+    //   this.delete(currentNode.left, nodeToDelete);
     //  }
 
-    //  if (nodeToDelete > root.data){
+    //  if (nodeToDelete > currentNode.data){
     //   //go to right subtree
-    //   console.log(`nodeToDel is more than root.data`);
-    //   this.delete(root.right, nodeToDelete);
+    //   console.log(`nodeToDel is more than currentNode.data`);
+    //   this.delete(currentNode.right, nodeToDelete);
     //  }
 
 
